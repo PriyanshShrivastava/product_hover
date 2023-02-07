@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+/* helper class */
+
+.hidden {
+  visibility: hidden;
+}
+.product-card {
+  width: 600px;
+  height: 400px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.product-card .circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transition: 0.3s all;
+}
+
+.product-card .circle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d83133;
+  clip-path: circle(150px at center);
+  transition: 0.6s all;
+  border-radius: 20px;
+  z-index: -2;
+}
+
+.product-card:hover .circle::before {
+  clip-path: circle(400px at center);
+  background-color: #005693;
+}
+
+.product-card .product-img {
+  height: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: 0.5s all;
+}
+
+.product-card:hover .product-img {
+  left: 80%;
+  height: 500px;
+  filter: drop-shadow(0 0 0.15rem #b12727);
+  pointer-events: none;
+}
+
+.product-card .content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  position: relative;
+  width: 50%;
+  padding: 40px 5px 20px;
+  left: 150px;
+  opacity: 0;
+  transition: 0.4s all;
+  z-index: 1;
+}
+
+.product-card .content h2 {
+  font-size: 3.2rem;
+  color: whitesmoke;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.content p {
+  color: whitesmoke;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.content p span::first-letter {
+  font-size: 2.4rem;
+  letter-spacing: -0.1rem;
+}
+
+.content p span {
+  position: relative;
+  color: #d83133;
+  display: inline-block;
+  padding: 0px 5px;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.pepsi::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 13px solid transparent;
+  border-right-color: #fff;
+  border-left: 0;
+  margin-top: -13px;
+  margin-left: -13px;
+  z-index: -1;
+}
+
+.content button {
+  padding: 10px 20px;
+  color: #005795;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  border: none;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  border: none;
+}
+
+.content button:hover {
+  transform: translateY(-5px);
+}
+
+/* Media Query */
+
+@media (max-width: 43em) {
+  .product-card {
+    transform: scale(0.8);
+  }
+}
+@media (max-width: 35em) {
+  .product-card {
+    width: 800px;
+    transform: scale(0.6);
+  }
+  .product-card .content {
+    width: 90%;
+    left: 0;
+    gap: 0.75rem;
+  }
+  .product-card .content p {
+    width: 60%;
+  }
+
+  .product-card:hover .product-img {
+    left: 90%;
+  }
+}
